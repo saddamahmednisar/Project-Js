@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../color_chnager/style.css">
+
+    <title>Javascript background color switcher</title>
+ 
+</head>
+
+<body>
+    <nav>
+        <a href="/" aria-current="page">Home</a>
+        <a target="_blank" href="http://www.youtube.com/@chaiaurcode">Youtube Channel</a>
+    </nav>
+    <div class="canvas">
+        <h1>Color Scheme Switcher</h1>
+
+        <div class="color_box">
+            <span class="button" id="grey" style="background-color: grey;"></span>
+            <span class="button" id="white" style="background-color: white;"></span>
+            <span class="button" id="blue" style="background-color: blue;"></span>
+            <span class="button" id="yellow" style="background-color: yellow;"></span>
+        </div>
+
+        <h2>Try clicking on one of the colors above <br />
+            <span>to change the background color of this page</span>
+        </h2>
+
+        <p class="text-color" id="cname">Show Text...</p>
+        <input placeholder="Please enter color code" type="text" id="colorCode" />
+        <button id="addbtn" class="addbtn">Add Box</button>
+        <p id="alerterror" class="error"></p>
+    </div>
+
+    <script src="changer.js"></script>
+
+</body>
+
+</html>
