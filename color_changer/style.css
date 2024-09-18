@@ -40,6 +40,12 @@
     background-color:aqua;
     border-radius: 5px;
   }
+  .removebtn{
+    width: 100px;
+    height: 32px;
+    background-color:aqua;
+    border-radius: 5px;
+  }
   #grey {
     background-color: grey;
   }
