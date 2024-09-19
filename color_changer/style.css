@@ -1,62 +1,67 @@
- 
-  span {
-    display: inline-block;
-    padding: 10px;
-  }
-  .button {
-    width: 50px;
-    height: 50px;
-    display: inline-block;
-    margin: 5px;
+span {
+  display: inline-block;
+  padding: 10px;
+  position: relative; 
 }
 
-.error {
-    color: red;
-    font-size: 14px;
+.button {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  margin: 5px;
+  border: solid black 2px;
+  position: relative; 
 }
-  .canvas {
-    margin: 100px ;
-    width: 80%;
-    text-align: center;
-  }
-  
-  .button {
-    width: 60px;
-    height: 60px;
-    border: solid black 2px;
-    display: inline-block;
-    margin: 5px;
-  }
-  #colorCode{
-    width: 180px;
-    height: 30px;
-    border: solid black 2px;
-    border-radius: 10px;
-    padding-left: 5px;
-  }
-  .addbtn{
-    width: 100px;
-    height: 32px;
-    background-color:aqua;
-    border-radius: 5px;
-  }
-  .removebtn{
-    width: 100px;
-    height: 32px;
-    background-color:aqua;
-    border-radius: 5px;
-  }
-  #grey {
-    background-color: grey;
-  }
-  
-  #white {
-    background-color: white;
-  }
-  #blue {
-    background-color: blue;
-  }
-  #yellow {
-    background-color: yellow;
-  }
-  
+
+.close-icon {
+  position: absolute;
+   top: 0px; 
+  right: 1px;
+  font-size: 16px;
+  color: red;
+  cursor: pointer;
+  z-index: 10; 
+ 
+}
+
+.canvas {
+  margin: 100px;
+  width: 80%;
+  text-align: center;
+}
+
+#colorCode {
+  width: 180px;
+  height: 30px;
+  border: solid black 2px;
+  border-radius: 10px;
+  padding-left: 5px;
+}
+
+.addbtn, .removebtn {
+  width: 100px;
+  height: 32px;
+  background-color: aqua;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#grey {
+  background-color: grey;
+ 
+}
+
+#white {
+  background-color: white;
+}
+
+#blue {
+  background-color: blue;
+}
+
+#yellow {
+  background-color: yellow;
+}
+
+
+

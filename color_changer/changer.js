@@ -11,13 +11,46 @@ function isValidColor(strColor) {
     return s.color !== '';
 }
 
+function createCloseIcon(span) {
+    let closeIcon = document.createElement('span');
+    closeIcon.classList.add('close-icon');
+    closeIcon.innerHTML = '<i class="fas fa-times"></i>';
+    closeIcon.style.cursor = 'pointer';
+    closeIcon.style.marginLeft = '0px';
+    span.appendChild(closeIcon);
+
+    closeIcon.addEventListener('click', function (e) {
+        e.stopPropagation();
+        span.remove();
+    });
+}
+
+
 function showCode() {
     let colorCode = colorCodeInput.value.trim();
 
+
     if (isValidColor(colorCode)) {
+
+        let normalizedColor = colorCode.toLowerCase();
+        let spans = document.querySelectorAll('.color_box .button');
+        let colorExists = false;
+
+        spans.forEach(function (span) {
+            let spanColor = getComputedStyle(span).backgroundColor;
+            if (parseColorCode(spanColor) === normalizedColor) {
+                colorExists = true;
+            }
+        });
+
+        if (colorExists) {
+            alert("Color already added");
+            return;
+        }
+
+
         body.style.backgroundColor = colorCode;
         cname.textContent = `Color Code: ${colorCode}`;
-
 
         let newSpan = document.createElement('span');
         newSpan.classList.add('button');
@@ -26,6 +59,7 @@ function showCode() {
         newSpan.setAttribute('data-color', colorCode);
         document.querySelector('.color_box').appendChild(newSpan);
 
+        createCloseIcon(newSpan);
 
         newSpan.addEventListener('click', function () {
             body.style.backgroundColor = colorCode;
@@ -38,30 +72,18 @@ function showCode() {
     }
 }
 
-//////////////////////////////// Remove function////////////////////////////////////////////////////
+
 
 function removeCode() {
     let colorCode = colorCodeInput.value.trim().toLowerCase();
 
     if (isValidColor(colorCode)) {
         let found = false;
-        let defaultSpans = document.querySelectorAll('.color_box .button');
-        defaultSpans.forEach(function (span) {
+        let spans = document.querySelectorAll('.color_box .button');
+        spans.forEach(function (span) {
             let spanColor = getComputedStyle(span).backgroundColor;
-            if (span.id && span.id === colorCode) {
-                span.style.display = 'none';
-                found = true;
-            } else if (parseColorCode(spanColor) === colorCode) {
-                span.style.display = 'none';
-                found = true;
-            }
-        });
-
-        let userSpans = document.querySelectorAll('.color_box .button[data-color]');
-        userSpans.forEach(function (span) {
-            let spanColor = span.getAttribute('data-color').toLowerCase();
-            if (spanColor === colorCode) {
-                document.querySelector('.color_box').removeChild(span);
+            if (span.id && span.id === colorCode || parseColorCode(spanColor) === colorCode) {
+                span.remove();
                 found = true;
             }
         });
@@ -80,6 +102,7 @@ function removeCode() {
     }
 }
 
+
 function parseColorCode(color) {
     if (color.indexOf('rgb') === 0) {
         let rgb = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
@@ -91,8 +114,10 @@ function parseColorCode(color) {
         return color;
     }
 }
+
 removeBtn.addEventListener('click', removeCode);
 addBtn.addEventListener('click', showCode);
+
 
 buttons.forEach(function (button) {
     button.addEventListener('click', function (e) {
@@ -111,8 +136,10 @@ buttons.forEach(function (button) {
                 body.style.backgroundColor = '#FFFF00';
                 break;
             default:
-                body.style.backgroundColor = '#0000';
+                body.style.backgroundColor = '#000000';
                 break;
         }
     });
+
+    createCloseIcon(button);
 });
