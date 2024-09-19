@@ -16,11 +16,12 @@ span {
 .close-icon {
   position: absolute;
    top: 0px; 
-  right: 1px;
-  font-size: 16px;
+  right: 0px;
+  font-size: 12px;
   color: red;
   cursor: pointer;
   z-index: 10; 
+  background-color: white;
  
 }
 

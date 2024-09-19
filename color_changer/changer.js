@@ -16,11 +16,17 @@ function createCloseIcon(span) {
     closeIcon.classList.add('close-icon');
     closeIcon.innerHTML = '<i class="fas fa-times"></i>';
     closeIcon.style.cursor = 'pointer';
-    closeIcon.style.marginLeft = '0px';
     span.appendChild(closeIcon);
 
     closeIcon.addEventListener('click', function (e) {
         e.stopPropagation();
+   
+       
+        let spanColor = getComputedStyle(span).backgroundColor;
+
+        if (getComputedStyle(body).backgroundColor === spanColor){
+           body.style.backgroundColor ="white"
+        }
         span.remove();
     });
 }
@@ -68,7 +74,7 @@ function showCode() {
         document.getElementById("colorCode").value = "";
 
     } else {
-        alert("Please enter a correct color code");
+        alert("Plz enter correct color code");
     }
 }
 
@@ -92,13 +98,13 @@ function removeCode() {
             cname.textContent = `Removed color code: ${colorCode}`;
             body.style.backgroundColor = "white";
         } else {
-            alert("Color not found in the list.");
+            alert("Color not found");
         }
-
+            
         document.getElementById("colorCode").value = "";
 
     } else {
-        alert("Please enter the correct color code.");
+        alert("Plz enter correct color code.");
     }
 }
 
@@ -143,3 +149,4 @@ buttons.forEach(function (button) {
 
     createCloseIcon(button);
 });
+
